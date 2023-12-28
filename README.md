@@ -1,3 +1,5 @@
+[![](https://dcbadge.vercel.app/api/server/kW9nBQErGe?compact=true&style=flat)](https://discord.gg/kW9nBQErGe)
+
 # sketch
 
 Sketch is an AI code-writing assistant for pandas users that understands the context of your data, greatly improving the relevance of suggestions. Sketch is usable in seconds and doesn't require adding a plugin to your IDE.
@@ -8,7 +10,7 @@ pip install sketch
 
 ## Demo 
 
-Here we follow a "standard" (hypothetical) data-analysis workflow, showing a Natural Language interace that successfully navigates many tasks in the data stack landscape. 
+Here we follow a "standard" (hypothetical) data-analysis workflow, showing a Natural Language interface that successfully navigates many tasks in the data stack landscape. 
 
 - Data Catalogging:
   - General tagging (eg. PII identification)
@@ -66,7 +68,14 @@ df['capitol'] = pd.DataFrame({'State': ['Colorado', 'Kansas', 'California', 'New
 
 ## Sketch currently uses `prompts.approx.dev` to help run with minimal setup
 
-In the future, we plan to update the prompts at this endpoint with our own custom foundation model, built to answer questions more accurately than GPT-3 can with its minimal data context. 
+You can also directly use a few pre-built hugging face models (right now `MPT-7B` and `StarCoder`), which will run entirely locally (once you download the model weights from HF).
+Do this by setting environment 3 variables:
+
+```python
+os.environ['LAMBDAPROMPT_BACKEND'] = 'StarCoder'
+os.environ['SKETCH_USE_REMOTE_LAMBDAPROMPT'] = 'False'
+os.environ['HF_ACCESS_TOKEN'] = 'your_hugging_face_token'
+```
 
 You can also directly call OpenAI directly (and not use our endpoint) by using your own API key. To do this, set 2 environment variables.
 
